@@ -103,10 +103,3 @@ curl localhost:3000/user/1/createPostResponse/1/postBody/I%20dont%20like%20this%
 ```bash
 curl localhost:3000/posts
 ```
-
-
-
-
-
-
-
