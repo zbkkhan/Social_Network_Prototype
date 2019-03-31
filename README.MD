@@ -7,7 +7,6 @@ Requires NodeJS, MySQL server
 2. Login to MySQL and `source create_schema.sql` and `source populate_data.sql`
 ```
 mysql -u root -p -e "source create_schema.sql"
-mysql -u root -p -e "source populate_data.sql"
 ```
 
 To start app server:  
