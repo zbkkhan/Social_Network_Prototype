@@ -1,5 +1,6 @@
+DROP DATABASE IF EXISTS social_network;
 CREATE DATABASE social_network;
-use social_network;
+USE social_network;
 
 CREATE TABLE IF NOT EXISTS Person(
 	userID INT AUTO_INCREMENT,
@@ -63,3 +64,5 @@ CREATE TABLE IF NOT EXISTS Engagement(
 	FOREIGN KEY fk_like_user(userID) REFERENCES Person(userID),
 	FOREIGN KEY fk_like_post(postID) REFERENCES Post(postID)
 ) ENGINE=INNODB;
+
+SOURCE populate_data.sql;
