@@ -1,16 +1,30 @@
 # Social Network Prototype
 ## Setup
 
-Requires NodeJS, MySQL server
+Requires NodeJS >= v8.10, MySQL server >= 5.6
 
-1. Change MySQL credentials in `app.js` to match local instance
-2. Login to MySQL and `source create_schema.sql` and `source populate_data.sql`
+1. Change MySQL credentials in `app.js` to match local instance  
+(replace \<HOSTNAME>, \<USER>, and \<PASSWORD>)
+```js
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : '<HOSTNAME>',
+  port: 3306,
+  user     : '<USER>',
+  password : '<PASSWORD>',
+  database : 'social_network',
+  multipleStatements: true
+});
+```
+2. Login to MySQL and execute the command `source create_schema.sql`
 ```
 mysql -u root -p -e "source create_schema.sql"
 ```
 
-To start app server:  
-`node app.js`
+3. Start the social network application server: 
+```bash
+node app.js
+```
 
 ## Functionality
 ### 1. Create USER `localhost:3000/createUser/:firstName/:lastName`  
