@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS Engagement(
 	userID INT NOT NULL,
 	postID INT NOT NULL,
 	isThumbsUp BOOL NOT NULL,
+	PRIMARY KEY (userID, postID),
 	FOREIGN KEY fk_like_user(userID) REFERENCES Person(userID),
 	FOREIGN KEY fk_like_post(postID) REFERENCES Post(postID)
 ) ENGINE=INNODB;

@@ -93,7 +93,7 @@ curl localhost:3000/user/1/latestFeed
 # Notice: There are posts in your feed again
 ```
 
-### 9. Thumbs UP/DOWN a POST `localhost:3000/post/:postId/user/:userId/[thumbsUp, thumbsDown]
+### 9. Thumbs UP/DOWN a POST `localhost:3000/post/:postId/user/:userId/[thumbsUp, thumbsDown]`
 _Allows users to vote on a post_
 ```bash
 # Make user 1 thumbs up the first post
