@@ -21,9 +21,9 @@ var connection = mysql.createConnection({
 mysql -u root -p -e "source create_schema.sql"
 ```
 
-3. Start the social network application server: 
+3. Run npm install and start the social network application server: 
 ```bash
-node app.js
+npm install && node app.js
 ```
 
 ## Functionality
