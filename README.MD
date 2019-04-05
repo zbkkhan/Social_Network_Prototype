@@ -1,16 +1,30 @@
 # Social Network Prototype
 ## Setup
 
-Requires NodeJS, MySQL server
+Requires NodeJS >= v8.10, MySQL server >= 5.6
 
-1. Change MySQL credentials in `app.js` to match local instance
-2. Login to MySQL and `source create_schema.sql` and `source populate_data.sql`
+1. Change MySQL credentials in `app.js` to match local instance  
+(replace \<HOSTNAME>, \<USER>, and \<PASSWORD>)
+```js
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : '<HOSTNAME>',
+  port: 3306,
+  user     : '<USER>',
+  password : '<PASSWORD>',
+  database : 'social_network',
+  multipleStatements: true
+});
+```
+2. Login to MySQL and execute the command `source create_schema.sql`
 ```
 mysql -u root -p -e "source create_schema.sql"
 ```
 
-To start app server:  
-`node app.js`
+3. Run npm install and start the social network application server: 
+```bash
+npm install && node app.js
+```
 
 ## Functionality
 ### 1. Create USER `localhost:3000/createUser/:firstName/:lastName`  
@@ -79,7 +93,7 @@ curl localhost:3000/user/1/latestFeed
 # Notice: There are posts in your feed again
 ```
 
-### 9. Thumbs UP/DOWN a POST `localhost:3000/post/:postId/user/:userId/[thumbsUp, thumbsDown]
+### 9. Thumbs UP/DOWN a POST `localhost:3000/post/:postId/user/:userId/[thumbsUp, thumbsDown]`
 _Allows users to vote on a post_
 ```bash
 # Make user 1 thumbs up the first post
