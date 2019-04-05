@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS Friend_Group(
 CREATE TABLE IF NOT EXISTS Group_Member(
 	groupID INT NOT NULL,
 	memberID INT NOT NULL,
+	PRIMARY KEY (groupID, memberID),
 	FOREIGN KEY fk_group(groupID) REFERENCES Friend_Group(groupID),
 	FOREIGN KEY fk_member(memberID) REFERENCES Person(userID)
 ) ENGINE=INNODB;
@@ -35,6 +36,7 @@ CREATE TABLE IF NOT EXISTS Nested_Topic(
 CREATE TABLE IF NOT EXISTS Following(
 	userID INT NOT NULL,
 	topicID INT NOT NULL,
+	PRIMARY KEY (userID, topicID),
 	FOREIGN KEY fk_following_user(userID) REFERENCES Person(userID),
 	FOREIGN KEY fk_following_topic(topicID) REFERENCES Nested_Topic(topicID)
 ) ENGINE=INNODB;
@@ -53,6 +55,7 @@ CREATE TABLE IF NOT EXISTS Post(
 CREATE TABLE IF NOT EXISTS Response(
 	responseID INT NOT NULL,
 	parentPostID INT NOT NULL,
+	PRIMARY KEY (responseID, parentPostID),
 	FOREIGN KEY fk_response_post_res(responseID) REFERENCES Post(postID),
 	FOREIGN KEY fk_response_post_parent(parentPostID) REFERENCES Post(postID)
 ) ENGINE=INNODB;
