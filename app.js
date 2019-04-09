@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   port: 3306,
   user     : 'root',
-  password : 'password',
+  password : '',
   database : 'social_network',
   multipleStatements: true
 });
@@ -229,7 +229,7 @@ app.get('/post/:postId/user/:userId/thumbsDown', (req, res) => {
 })
 
 let engagement = (postId, userId, isLike, res) => {
-  let insertSql =  `INSERT INTO Engagement (userID, postID, isThumbsUp) VALUES (${userId},${postId},${isLike ? 1 : 0})`
+  let insertSql =  `INSERT INTO Engagement (userID, postID, isThumbsUp) VALUES (${userId},${postId},${isLike ? 1 : 0}) ON DUPLICATE KEY UPDATE isThumbsUp=${isLike ? 1 : 0}`
   let selectSql = `SELECT * FROM Engagement WHERE postID = ${postId}`
   connection.query(insertSql, (err) => {
     if(err) throw err
